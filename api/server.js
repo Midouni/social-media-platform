@@ -6,7 +6,7 @@ const app = express()
 //router
 const authRouter = require('./routes/auth')
 
-
+app.use(express.json());
 app.use('/api/v1/auth', authRouter)
 
 
