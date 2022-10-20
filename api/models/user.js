@@ -2,6 +2,22 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const JWT = require('jsonwebtoken')
 
+
+//childSchema
+const PeopleSchema = new mongoose.Schema({
+    id: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: [true, "please provide id of person"]
+    },
+    status: {
+        type: String,
+        enum: ["firend", "sendRequest", "receiveRequest", "blocked"],
+        required: [true, "please provide status of person"]
+    }
+},{timestamps:true})
+
+
 const UserSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -39,6 +55,15 @@ const UserSchema = mongoose.Schema({
         type: String,
         enum: ['male', 'female'],
         required: [true, 'please provide gender']
+    },
+    persons: [PeopleSchema],
+    profilPicture: {
+        type: String,
+        default: ""
+    },
+    coverPicture: {
+        type: String,
+        default: ""
     }
 }, { timestamps: true })
 
@@ -58,4 +83,12 @@ UserSchema.methods.comparePassword = async function (currentPassword) {
     const isMatch = await bcrypt.compare(currentPassword, this.password)
     return isMatch
 }
-module.exports = mongoose.model('users', UserSchema)
+module.exports =  {"user":mongoose.model('users', UserSchema),"person":PeopleSchema}
+
+
+
+
+
+
+
+
