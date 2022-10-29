@@ -5,9 +5,14 @@ const app = express()
 
 //router
 const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
+
+//autherization middleware
+const authorizationMiddleware = require('./middleware/authentication')
 
 app.use(express.json());
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/user', authorizationMiddleware, userRouter)
 
 
 //middlewares:

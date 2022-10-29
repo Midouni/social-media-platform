@@ -15,7 +15,7 @@ const PeopleSchema = new mongoose.Schema({
         enum: ["firend", "sendRequest", "receiveRequest", "blocked"],
         required: [true, "please provide status of person"]
     }
-},{timestamps:true})
+}, { timestamps: true })
 
 
 const UserSchema = mongoose.Schema({
@@ -38,7 +38,7 @@ const UserSchema = mongoose.Schema({
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             'Please provide a valid email',
         ],
-        unique: true,
+        unique: [true, `this ${this.email} exist`],
     },
     password: {
         type: String,
@@ -83,7 +83,7 @@ UserSchema.methods.comparePassword = async function (currentPassword) {
     const isMatch = await bcrypt.compare(currentPassword, this.password)
     return isMatch
 }
-module.exports =  {"user":mongoose.model('users', UserSchema),"person":PeopleSchema}
+module.exports = { "user": mongoose.model('users', UserSchema), "person": PeopleSchema }
 
 
 

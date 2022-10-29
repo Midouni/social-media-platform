@@ -7,8 +7,8 @@ const { BadRequestError, UnauthenticatedError } = require('../errors')
 const register = async (req, res) => {
     const user = await User.create({ ...req.body })
     const token = await user.createJWT()
-    res.status(StatusCodes.CREATED).json({ token, user })
-    // res.status(StatusCodes.CREATED).json({ token, user: { firstName: user.firstName, lastName: user.lastName } })
+    //res.status(StatusCodes.CREATED).json({ token, user })
+    res.status(StatusCodes.CREATED).json({ token, user: { firstName: user.firstName, lastName: user.lastName } })
 }
 
 const login = async (req, res) => {
@@ -35,15 +35,15 @@ const login = async (req, res) => {
     res.status(StatusCodes.CREATED).json({ token, user: { firstName: user.firstName, lastName: user.lastName } })
 }
 
-const test = async(req,res)=>{
-const user =await User.findOne({"_id":"63519e1059175041760a4fed"}).select("persons")
-let x = user.persons.map((e)=>{
-    if (e.id!="63519cf24e97cb65d0d6c08d") {
-        
-        return e
-    }
-})
-res.send(x)
+const test = async (req, res) => {
+    const user = await User.findOne({ "_id": "63519e1059175041760a4fed" }).select("persons")
+    let x = user.persons.map((e) => {
+        if (e.id == "63519cf24e97cb65d0d6c08d") {
+
+            return e
+        }
+    })
+    res.send(x)
 }
 
 module.exports = {

@@ -4,8 +4,10 @@ const errorsHandlerMiddleware = (err, req, res, next) => {
         statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
         message: err.message || "sameting wrong please try again later ..."
     }
-    console.log(err);
+    if (err.name && err.name === "CastError" && err.kind === "ObjectId") {
+        customError.statusCode = StatusCodes.BAD_REQUEST
+        customError.message = `id {${err.value}} is invalid format`
+    }
     res.status(customError.statusCode).json({ msg: customError.message })
 }
-
 module.exports = errorsHandlerMiddleware
