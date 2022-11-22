@@ -1,0 +1,83 @@
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+    --primaryColor: #1B74E4;
+    --mainBackground: #f1f2f5;
+    --mainWhite: #FFF;
+    --inputColor: #64676b;
+    --inputBackgroundColor: #EFF2F5;
+    --topbarListColor: #5F6266;
+    --topbarListColorClick: #1B74E4;
+    --topbarListBackgroundColorHover: #F2F2F2;
+    --sidebarListBackgroundColorHover: #E5E6E9;
+    --scrollbarThumb: #BCC0C4;
+
+    --primaryDarkColor: #c02c03;
+    --mainWhite: #FFF;
+    --offWhite: #f7f7f7;
+    --mainOverlay: rgba(35, 10, 36, 0.4);
+    --mainBlack: #222;
+    --mainGrey: #ececec;
+    --darkGrey: #afafaf;
+    --mainRed: #bd0303;
+
+    --mainTransition: all 0.3s linear;
+    --mainSpacing: 0.3rem;
+    --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+    --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    --mainBorderRadius: 0.25rem;
+    --smallWidth: 85vw;
+    --maxWidth: 40rem;
+    --fullWidth: 1170px;
+}
+
+/* 
+====== 
+Global Styles 
+======
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto';
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background-color: var(--mainBackground);
+}
+
+.container-1 {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.container-2 {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.fontSize20px {
+    font-size: 20px;
+}
+
+.fontSize27px {
+    font-size: 27px;
+}
+
+.fontSize30px {
+    font-size: 30px;
+}

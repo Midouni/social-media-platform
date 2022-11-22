@@ -1,0 +1,8 @@
+.sidebar-right {
+    flex: 2.45;
+    height: calc(100vh - 50px);
+    position: sticky;
+    background-color: transparent;
+    position: sticky;
+    top: 57px;
+}
